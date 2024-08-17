@@ -1,5 +1,6 @@
 'use client'
 
+import { NextResponse } from 'next/server'
 import { collection, getDocs, query, deleteDoc, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '@/firebase'
 
@@ -44,6 +45,7 @@ export const getUser = async (user_id) => {
       return NextResponse.error('No such document!');
     }
   } catch (error) {
+    console.log(error);
     return NextResponse.error(error);
   }
 }

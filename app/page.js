@@ -6,13 +6,15 @@ import { createUser, getUser, updateUser, deleteUser } from '@/app/components/ap
 import { addProject, getProject, updateData, deleteProject } from '@/app/components/api/project'
 
 export default function Home() {
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const userData = await getUser("k199sf6wHfjlfOgbufdY")
-      console.log(userData)
-    }
-    fetchUserData()
-  }, [])
+
+  // testing api: change firebase database rule to true for dev testing
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     const userData = await getUser("k199sf6wHfjlfOgbufdY")
+  //     console.log(await userData.json())
+  //   }
+  //   fetchUserData()
+  // }, [])
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

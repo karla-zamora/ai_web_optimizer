@@ -1,5 +1,6 @@
 'use client'
 
+import { NextResponse } from 'next/server'
 import { collection, getDocs, query, deleteDoc, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '@/firebase'
 
@@ -7,7 +8,7 @@ const collectionName = 'project'
 
 
 // Create new project
-const createProject = async (data) => {
+export const createProject = async (data) => {
   try {
     const docRef = await collection(db, collectionName).add(data);
     return NextResponse.json({ id: docRef.id });
@@ -17,7 +18,7 @@ const createProject = async (data) => {
 }
 
 // Get Project
-const getProject = async (proj_id) => {
+export const getProject = async (proj_id) => {
   try {
     const projRef = doc(db, collectionName, proj_id);
     const projDoc = await getDoc(projRef);
@@ -29,7 +30,7 @@ const getProject = async (proj_id) => {
 }
 
 // Update Project
-const updateData = async (data) => {
+export const updateData = async (data) => {
   try {
     const projRef = doc(db, collectionName, data.id);
     const projDoc = await getDoc(projRef);
@@ -42,7 +43,7 @@ const updateData = async (data) => {
 }
 
 // Delete Project
-const deleteProject = async (proj_id) => {
+export const deleteProject = async (proj_id) => {
   try {
     const projRef = doc(db, collectionName, proj_id);
     const projDoc = await getDoc(projRef);

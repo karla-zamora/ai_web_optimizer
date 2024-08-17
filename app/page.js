@@ -1,6 +1,19 @@
+'use client'
+
 import Image from "next/image";
+import { useEffect } from 'react'
+import { createUser, getUser, updateUser, deleteUser } from '@/app/components/api/user'
+import { addProject, getProject, updateData, deleteProject } from '@/app/components/api/project'
 
 export default function Home() {
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const userData = await getUser("k199sf6wHfjlfOgbufdY")
+      console.log(userData)
+    }
+    fetchUserData()
+  }, [])
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">

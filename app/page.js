@@ -2,7 +2,22 @@
 import Header from './components/Header';
 import StartButton from './components/StartButton';
 
-export default function Home(){
+import Image from "next/image";
+import { useEffect } from 'react'
+import { createUser, getUser, updateUser, deleteUser } from '@/app/components/api/user'
+import { addProject, getProject, updateData, deleteProject } from '@/app/components/api/project'
+
+export default function Home() {
+
+  // testing api: change firebase database rule to true for dev testing
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     const userData = await getUser("k199sf6wHfjlfOgbufdY")
+  //     console.log(await userData.json())
+  //   }
+  //   fetchUserData()
+  // }, [])
+  
   return (
     <div class="flex flex-col h-screen">
       <Header />

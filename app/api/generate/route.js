@@ -8,7 +8,16 @@ export async function POST(req, res) {
         //set gemini model to use
         const model = genAI.getGenerativeModel({
             model: "gemini-1.5-flash",
-            systemInstruction: "You are an web optimizer help tool. You will get pieces of code by the user, and your job is to modify them slightly according to the user's need. For example, if the user wants to improve their website landing page to be more professional, you will return the formatted code with the modifications as needed. If you are asked to create code, only return the code and nothing else, no other text response allowed other than the code itself"
+            systemInstruction: `You are an web optimizer help tool. 
+            You will get pieces of code by the user, and your job is to modify them slightly according to the user's need. 
+            For example, if the user wants to improve their website landing page to be more professional, 
+            you will return the formatted code with the modifications as needed. Or if the user wants their page to be more colorful, only modify colors and nothing else.
+            If you are asked to create code, only return the code and nothing else, no other text response allowed other than the code itsel.
+            Your code will be ran in one single App.js file, so any css styling must be included in the same page. 
+            Also only use native react components instead of external dependencies that would normally have to be installed.
+            If you need to use any images for any reason, use only the following link: "https://dummyimage.com/300" and nothing else.
+            and resize it accordingly to the size of the font.
+            Make sure every code response you provide is a react app that ends with "export default App;"`
         })
         //receive "prompt" from request
         const data = await req.json()

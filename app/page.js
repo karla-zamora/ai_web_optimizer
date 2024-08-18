@@ -12,8 +12,8 @@ import Footer from './components/Footer';
 export default function Home() {
   return (
     <div class="h-screen bg-white">
-      <div className="bg-white text-gray-800 text-center" id="title">
-          <h1 className="text-[250px]">EmberCraft</h1>
+      <div className="bg-white text-gray-800 text-center hidden sm:block" id="title">
+        <h1 className="text-8xl sm:text-8xl md:text-9xl lg:text-9xl xl:text-9xl">EmberCraft</h1>
       </div>
 
       <Header />

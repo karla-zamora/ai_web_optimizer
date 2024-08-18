@@ -1,5 +1,6 @@
 'use client'
 import Header from '@/app/components/Header';
+import Sandbox from '@/app/components/Sandbox';
 import DashboardLayout from '../../components/Dashboardlayout';
 import Footer from '@/app/components/Footer';
 import { Sidebar, SidebarBody, SidebarLink } from '@/app/components/ui/sidebar';
@@ -39,10 +40,12 @@ export default function Page() {
               </SidebarBody>
             </Sidebar>
           </div>
-          <div className="flex-grow p-4">
+          <div className="flex-grow p-1">
             <h1>Welcome to your dashboard!</h1>
             <p>Some content</p>
-
+            <div>
+              <Sandbox/>
+            </div>
           </div>
         </div>
 

@@ -6,7 +6,9 @@ import Image from "next/image";
 import { useEffect } from 'react'
 import BasicButton from './components/BasicButton';
 import ProButton from './components/ProButton';
+import DashButton from './components/DashButton';
 import Footer from './components/Footer';
+import { SignedIn, SignedOut } from '@clerk/nextjs';
 
 export default function Home() {
   return (
@@ -49,28 +51,45 @@ export default function Home() {
         </ul>
       </div>
 
-      <div class="grid bg-white grid-cols-1 gap-4 flex-col divide-x divide-solid divide-neutral-400 md:grid-cols-8" id="pricing">
-        <div class="p-4 col-span-4 text-center flex flex-col grow justify-center">
-          <h1 class="text-3xl p-6">Basic<br /></h1>
-          <ul class="p-4 text-center flex flex-col justify-center divide-y divide-solid divide-neutral-400">
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br /></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br /></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br /></li>
-          </ul>
-          <h1 class="text-lg font-semibold">$1.99 monthly</h1>
-          <div class="p-4"><BasicButton /></div>
+      <SignedOut>
+        <div class="grid bg-white grid-cols-1 gap-4 flex-col divide-x divide-solid divide-neutral-400 md:grid-cols-8" id="pricing">
+          <div class="p-4 col-span-4 text-center flex flex-col grow justify-center">
+            <h1 class="text-3xl p-6">Basic<br /></h1>
+            <ul class="p-4 text-center flex flex-col justify-center divide-y divide-solid divide-neutral-400">
+              <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br /></li>
+              <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br /></li>
+              <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br /></li>
+            </ul>
+
+            <h1 class="text-lg font-semibold line-through">$1.99 monthly</h1>
+            <h1 class="text-lg font-semibold">Free for a limited time!</h1>
+            <h1 class="text-sm">Click below to get started</h1>
+            <div class="p-4"><BasicButton /></div>
+
+          </div>
+          <div class="p-4 col-span-4 text-center flex flex-col justify-center">
+            <h1 class="text-3xl p-6">Pro<br /></h1>
+            <ul class="p-4 text-center flex flex-col justify-center divide-y divide-solid divide-neutral-400">
+              <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br /></li>
+              <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br /></li>
+              <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br /></li>
+            </ul>
+            <h1 class="text-lg font-semibold line-through">$4.99 monthly</h1>
+            <h1 class="text-lg font-semibold">Free for a limited time!</h1>
+            <h1 class="text-sm">Click below to get started</h1>
+            <div class="p-4"><ProButton /></div>
+          </div>
         </div>
-        <div class="p-4 col-span-4 text-center flex flex-col justify-center">
-          <h1 class="text-3xl p-6">Pro<br /></h1>
-          <ul class="p-4 text-center flex flex-col justify-center divide-y divide-solid divide-neutral-400">
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br /></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br /></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br /></li>
-          </ul>
-          <h1 class="text-lg font-semibold">$4.99 monthly</h1>
-          <div class="p-4"><ProButton /></div>
+      </SignedOut>
+      <SignedIn>
+        <div class="grid bg-white grid-cols-1 gap-4 flex-col divide-x divide-solid divide-neutral-400 md:grid-cols-8" id="pricing">
+          <div class="p-4 col-span-8 text-center flex flex-col justify-center">
+            <h1 class="text-3xl p-6">You're all set up!<br/></h1>
+            <h1 class="text-md">Click below to go to your dashboard</h1>
+            <div class="p-4"><DashButton /></div>
+          </div>
         </div>
-      </div>
+      </SignedIn>
 
       <Footer />
     </div>

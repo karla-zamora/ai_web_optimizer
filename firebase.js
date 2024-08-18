@@ -100,6 +100,35 @@ const createUser = async (userId, userfirstName, userLastName, userImageURL) => 
   }
 }
 
+const createProject = async (userId, title, chat) => {
+  try {
+    // const pantryRef = collection(firestore, 'Pantry');
+    // const userRef = doc(pantryRef, user?.id);
+    // const getUserPantry = collection(userRef, 'Items');
+    // const items = await getDocs(getUserPantry);
+
+    // const projRef = await addDoc(collection(db, collectionName), { title });
+    // const projDoc = await getDoc(projRef);
+
+    const usersRef = collection(db, 'users');
+    const userRef = doc(collectionRef, userId);
+    const projectsRef = collection(userRef, 'projects');
+    const projRef = doc(projectsRef, title);
+    const projDoc = await getDoc(projRef);
+
+    if (projDoc.exists()) {
+      console.log("Project already exists in db.");
+    } else {
+      console.log("Project does not exist in db. Creating a new project in db.");
+      await setDoc(projRef, {
+        title: title,
+        chat: chat
+      })
+    }
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+}
 
 
 export { db, app, auth, createUser };

@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { Box, Stack, TextField, Button, Typography } from '@mui/material';
 import { SandpackProvider, SandpackLayout, SandpackCodeEditor, SandpackPreview, Sandpack } from '@codesandbox/sandpack-react';
 
-export default function Home() {
+export default function Sandbox() {
     // messages = user and AI responses to be displayed in bubble chats
     const [messages, setMessages] = useState([
         {

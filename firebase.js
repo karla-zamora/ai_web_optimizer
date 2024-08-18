@@ -4,6 +4,8 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, onAuthStateChanged, signInWithCustomToken } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { doc, getDoc } from 'firebase/firestore'
+import { collection, setDoc } from 'firebase/firestore';
+
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,7 +14,6 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
   
@@ -76,3 +77,58 @@ export default function FirebaseUI() {
     </main>
   )
 }
+
+const createUser = async (userId, userfirstName, userLastName, userImageURL) => {
+  try{
+      const collectionRef = collection(db, 'users');
+      const docRef = doc(collectionRef, userId);
+      const docSnap = await getDoc(docRef);
+    
+      if(docSnap.exists()){
+          console.log("User already exists in db.");
+      } else {
+          console.log("User does not exist in db. Creating a new user in db.");
+          await setDoc(docRef, {
+              firstName: userfirstName,
+              lastName: userLastName,
+              userImage: userImageURL,
+          })
+      }
+
+  } catch (error) {
+      console.error("Error adding user to db");
+  }
+}
+
+const createProject = async (userId, title, chat) => {
+  try {
+    // const pantryRef = collection(firestore, 'Pantry');
+    // const userRef = doc(pantryRef, user?.id);
+    // const getUserPantry = collection(userRef, 'Items');
+    // const items = await getDocs(getUserPantry);
+
+    // const projRef = await addDoc(collection(db, collectionName), { title });
+    // const projDoc = await getDoc(projRef);
+
+    const usersRef = collection(db, 'users');
+    const userRef = doc(collectionRef, userId);
+    const projectsRef = collection(userRef, 'projects');
+    const projRef = doc(projectsRef, title);
+    const projDoc = await getDoc(projRef);
+
+    if (projDoc.exists()) {
+      console.log("Project already exists in db.");
+    } else {
+      console.log("Project does not exist in db. Creating a new project in db.");
+      await setDoc(projRef, {
+        title: title,
+        chat: chat
+      })
+    }
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+}
+
+
+export { db, app, auth, createUser };

@@ -9,14 +9,18 @@ import {
   IconBrandTabler,
   IconSettings,
   IconUserBolt,
-  IconHome
+  IconHome,
+  IconFavicon,
+  IconFolder,
+  IconHeart,
+  IconPlus
 } from "@tabler/icons-react";
 
-// Example usage:
+
 const links = [
-  { label: "Home", href: "/", icon: <IconHome /> },
-  { label: "Settings", href: "/about", icon: <IconSettings /> },
-  { label: "Logout", href: "/logout", icon: <IconUserBolt /> }
+  { label: "Create", icon: <IconPlus />, onClick: () => alert('Create clicked') },
+  { label: "Folder", icon: <IconFolder />, onClick: () => alert('Folder clicked') },
+  { label: "Favorites", icon: <IconHeart />, onClick: () => alert('Favorites clicked') },
 ];
 
 export default function Page() {

@@ -120,17 +120,11 @@ export const MobileSidebar = ({ className, children, ...props }) => {
 
 export const SidebarLink = ({ link, className, ...props }) => {
   const { open, animate } = useSidebar();
-  return (
-    <Link
-      href={link.href}
-      className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2",
-        className
-      )}
-      {...props}
-    >
+  const isButton = !link.href;
+  
+  const content = (
+    <>
       {link.icon}
-
       <motion.span
         animate={{
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
@@ -140,6 +134,30 @@ export const SidebarLink = ({ link, className, ...props }) => {
       >
         {link.label}
       </motion.span>
+    </>
+  );
+
+  return isButton ? (
+    <button
+      className={cn(
+        "flex items-center justify-start gap-2 group/sidebar py-2",
+        className
+      )}
+      onClick={link.onClick} // Add this line to handle button click
+      {...props}
+    >
+      {content}
+    </button>
+  ) : (
+    <Link
+      href={link.href}
+      className={cn(
+        "flex items-center justify-start gap-2 group/sidebar py-2",
+        className
+      )}
+      {...props}
+    >
+      {content}
     </Link>
   );
 };

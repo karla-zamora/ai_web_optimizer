@@ -59,7 +59,8 @@ export default function Home() {
             <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br /></li>
             <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br /></li>
           </ul>
-          <div class="p-6"><BasicButton /></div>
+          <h1 class="text-lg font-semibold">$1.99 monthly</h1>
+          <div class="p-4"><BasicButton /></div>
         </div>
         <div class="p-4 col-span-4 text-center flex flex-col justify-center">
           <h1 class="text-3xl p-6">Pro<br /></h1>
@@ -68,7 +69,8 @@ export default function Home() {
             <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br /></li>
             <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br /></li>
           </ul>
-          <div class="p-6"><ProButton /></div>
+          <h1 class="text-lg font-semibold">$4.99 monthly</h1>
+          <div class="p-4"><ProButton /></div>
         </div>
       </div>
 

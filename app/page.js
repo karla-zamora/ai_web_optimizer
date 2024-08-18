@@ -23,6 +23,10 @@ export default function Home() {
   
   return (
     <div class="h-screen bg-white">
+      <div className="bg-white text-gray-800 text-center" id="title">
+          <h1 className="text-[250px]">EmberCraft</h1>
+      </div>
+
       <Header />
 
       <div class="grid bg-white h-100 grid-cols-8 gap-4 flex-col mx-auto" id="landing">

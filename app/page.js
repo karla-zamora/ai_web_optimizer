@@ -4,8 +4,6 @@ import Header from './components/Header';
 import StartButton from './components/StartButton';
 import Image from "next/image";
 import { useEffect } from 'react'
-import { createUser, getUser, updateUser, deleteUser } from '@/app/components/api/user'
-import { addProject, getProject, updateData, deleteProject } from '@/app/components/api/project'
 import BasicButton from './components/BasicButton';
 import ProButton from './components/ProButton';
 import Footer from './components/Footer';

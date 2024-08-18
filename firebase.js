@@ -4,6 +4,8 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, onAuthStateChanged, signInWithCustomToken } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { doc, getDoc } from 'firebase/firestore'
+import { collection, setDoc } from 'firebase/firestore';
+
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,7 +14,6 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
   
@@ -76,3 +77,29 @@ export default function FirebaseUI() {
     </main>
   )
 }
+
+const createUser = async (userId, userfirstName, userLastName, userImageURL) => {
+  try{
+      const collectionRef = collection(db, 'users');
+      const docRef = doc(collectionRef, userId);
+      const docSnap = await getDoc(docRef);
+    
+      if(docSnap.exists()){
+          console.log("User already exists in db.");
+      } else {
+          console.log("User does not exist in db. Creating a new user in db.");
+          await setDoc(docRef, {
+              firstName: userfirstName,
+              lastName: userLastName,
+              userImage: userImageURL,
+          })
+      }
+
+  } catch (error) {
+      console.error("Error adding user to db");
+  }
+}
+
+
+
+export { db, app, auth, createUser };

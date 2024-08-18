@@ -1,7 +1,6 @@
 'use client'
 import Header from './components/Header';
 import StartButton from './components/StartButton';
-
 import Image from "next/image";
 import { useEffect } from 'react'
 import { createUser, getUser, updateUser, deleteUser } from '@/app/components/api/user'
@@ -11,16 +10,6 @@ import ProButton from './components/ProButton';
 import Footer from './components/Footer';
 
 export default function Home() {
-
-  // testing api: change firebase database rule to true for dev testing
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     const userData = await getUser("k199sf6wHfjlfOgbufdY")
-  //     console.log(await userData.json())
-  //   }
-  //   fetchUserData()
-  // }, [])
-  
   return (
     <div class="h-screen bg-white">
       <div className="bg-white text-gray-800 text-center" id="title">
@@ -41,8 +30,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div class="grid bg-white h-100 grid-cols-12 gap-4 flex-col mx-auto" id="features">
-        <div class="p-4 col-span-6 justify-center flex flex-col">
+      <div className="grid bg-white h-100 grid-cols-12 gap-4 flex-col mx-auto" id="features">
+        <div className="p-4 col-span-6 justify-center flex flex-col">
           <img style={{borderRadius: '20px'}} src="https://images.unsplash.com/photo-1712111474888-29e9431241b6?q=80&w=2232&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
         </div>
         <div class="p-4 col-span-1"/>

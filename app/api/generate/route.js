@@ -7,7 +7,7 @@ export async function POST(req, res) {
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
         //set gemini model to use
         const model = genAI.getGenerativeModel({
-            model: "gemini-1.5-flash",
+            model: "gemini-1.5-pro",
             systemInstruction: `You are an web optimizer help tool. 
             You will get pieces of code by the user, and your job is to modify them slightly according to the user's need. 
             For example, if the user wants to improve their website landing page to be more professional, 

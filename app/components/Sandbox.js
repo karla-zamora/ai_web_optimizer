@@ -97,6 +97,8 @@ export default function Sandbox( { user } ) {
         return ( 
             <div> 
                 <h1>Start creating!</h1> 
+                <p>Generate a React App</p>
+                <p>Disclaimer: external dependencies are not supported yet</p>
             </div> ) 
     } 
     export default App;`);

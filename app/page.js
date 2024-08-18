@@ -131,11 +131,11 @@ export default function Home() {
             justifyContent="center"
             alignItems="center"
         >
-            <Stack id="chat-and-display" direction={'row'} maxWidth={'80%'} spacing={3}>
+            <Stack id="chat-and-display" direction={'row'} maxWidth={'80vw'} spacing={3}>
                 <Stack
                     id="chatbox"
                     direction={'column'}
-                    maxWidth="50vw"
+                    width="50vw"
                     height="70vh"
                     border="1px solid #ccc"
                     p={2}
@@ -223,12 +223,8 @@ export default function Home() {
                     <SandpackLayout >
                         <SandpackPreview />
                     </SandpackLayout>
-                    <FormGroup>
-                        <FormControlLabel  onClick={handleReference} control={<Checkbox defaultChecked />} label="Reference Code" />
-                    </FormGroup>
-                        <Button onClick={handleReference}>
-                            Reference Code
-                        </Button>
+
+
                 </SandpackProvider>
 
 

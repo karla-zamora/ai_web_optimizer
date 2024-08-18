@@ -1,0 +1,10 @@
+.sandpack-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .sandpack-editor, .sandpack-preview {
+    height: 6000px;
+  }
+  

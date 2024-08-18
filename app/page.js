@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from "react";
-import { Box, Stack, TextField, Button, Typography } from '@mui/material';
+import { Box, Stack, TextField, Button, Typography, FormGroup, Checkbox, FormControlLabel } from '@mui/material';
 import { SandpackProvider, SandpackLayout, SandpackCodeEditor, SandpackPreview, Sandpack } from '@codesandbox/sandpack-react';
 
 export default function Home() {
@@ -34,14 +34,14 @@ export default function Home() {
 
         // Function to send prompt to model
         try {
+            const completeInput = referencedCode ? message + ": " + referencedCode : message
             const response = await fetch('/api/generate', {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify({ body: message }),
+                body: JSON.stringify({ body: completeInput }),
             });
 
             const data = await response.json();
-            ////console.log(data.output)
             if (response.ok) {
                 setMessages((messages) => [
                     ...messages,
@@ -63,6 +63,8 @@ export default function Home() {
 
         // Response was received
         setIsLoading(false);
+        // Turn off referenced code
+        setReferencedCode('')
     };
 
     const handleKeyPress = (event) => {
@@ -79,27 +81,44 @@ export default function Home() {
     // Scroll to bottom of each new message
     useEffect(() => {
         scrollToBottom();
-        console.log(messages[messages.length - 1].content)
+        //console.log(messages[messages.length - 1].content)
     }, [messages]);
 
-    // Sandpack config
+    // Sandpack initial config (app.js code and app.css code for the sandpack)
     const [code, setCode] = useState(`
     import React from 'react'
     function App() { 
         return ( 
             <div> 
-                <h1>Hello World!</h1> 
+                <h1>Start creating!</h1> 
             </div> ) 
     } 
     export default App;`);
 
-    // Example function to update the code dynamically
+    const [style, setStyle] = useState()
+    const [referencedCode, setReferencedCode] = useState("")
+
+    // Function to update the sandbox code dynamically
     const handleChangeCode = (newCode) => {
-        setCode(newCode);
+        setCode(newCode.appResponse)
+        setStyle(newCode.styleResponse)
+        setReferencedCode(newCode.codeResponse)
     };
 
+    // Functions to format code responses from model
     const responseFormat = (text) => {
-        return text
+        // isolate code and styling from explanation
+        const codeResponse = text.slice(0, text.indexOf("Response"))
+        const appResponse = codeResponse.slice(codeResponse.indexOf("import"), codeResponse.indexOf("export default App;") + 19) // end of app code inclusive     
+        const styleResponse = text.includes("```css") ? codeResponse.slice(codeResponse.indexOf("```css") + 6, codeResponse.lastIndexOf("}") + 1) : ""// end of css code inclusive
+        const explanation = text.includes("Response:") ? text.slice(text.indexOf("Response:") + 10, text.length) : text
+
+        return { appResponse, styleResponse, explanation, codeResponse }
+    }
+
+    const handleReference = () => {
+        //setMessage(referencedCode)
+        console.log(referencedCode)
     }
 
 
@@ -112,11 +131,12 @@ export default function Home() {
             justifyContent="center"
             alignItems="center"
         >
-            <Stack direction={'row'} maxWidth={'100%'}>
+            <Stack id="chat-and-display" direction={'row'} maxWidth={'80%'} spacing={3}>
                 <Stack
+                    id="chatbox"
                     direction={'column'}
-                    width="700px"
-                    height="700px"
+                    maxWidth="50vw"
+                    height="70vh"
                     border="1px solid #ccc"
                     p={2}
                     spacing={3}
@@ -154,9 +174,9 @@ export default function Home() {
                                     p={2}
                                     maxWidth="70%"
                                 >
-                                    <p>{responseFormat(message.content)}</p>
+                                    <p>{message.role === 'assistant' ? responseFormat(message.content).explanation : message.content}</p>
                                 </Box>
-                                <Button sx={{ display: message.role === 'assistant' ? 'inline-block' : 'none' }} onClick={() => handleChangeCode(messages[index].content)}>
+                                <Button sx={{ display: message.role === 'assistant' && message.content.includes('import') ? 'inline-block' : 'none' }} onClick={() => handleChangeCode(responseFormat(messages[index].content))}>
                                     Use code
                                 </Button>
                             </Box>
@@ -190,15 +210,28 @@ export default function Home() {
                             code: code,
                             active: true,
                         },
+                        'App.css': {
+                            code: style,
+                            active: true
+                        }
                     }}
                 >
-                    <SandpackLayout >
-                        <SandpackCodeEditor />       
+                    <SandpackLayout>
+                        <SandpackCodeEditor />
                     </SandpackLayout>
+                    <br></br>
                     <SandpackLayout >
                         <SandpackPreview />
                     </SandpackLayout>
+                    <FormGroup>
+                        <FormControlLabel  onClick={handleReference} control={<Checkbox defaultChecked />} label="Reference Code" />
+                    </FormGroup>
+                        <Button onClick={handleReference}>
+                            Reference Code
+                        </Button>
                 </SandpackProvider>
+
+
 
 
             </Stack>

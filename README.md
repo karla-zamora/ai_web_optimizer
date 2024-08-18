@@ -2,16 +2,17 @@
 
 Our app would help optimize and code a website using LLM.
 
-## Contributors/Team  
-Kyle Huang: https://github.com/kylehuang041  
-Nathaniel Wood: https://github.com/enjiwood  
-Jonathan Ballona Sanchez: https://github.com/jballo  
-Cole K: https://github.com/cole-kralicek  
-Karla Zamora: https://github.com/karla-zamora 
+## Contributors/Team
+
+* Kyle Huang: https://github.com/kylehuang041
+* Nathaniel Wood: https://github.com/enjiwood
+* Jonathan Ballona Sanchez: https://github.com/jballo
+* Cole K: https://github.com/cole-kralicek
+* Karla Zamora: https://github.com/karla-zamora
 
 ## Links
-[Slides](https://docs.google.com/presentation/d/18k6E0X6D1LEZ7Ei4u2wI1JZ88MXVi5RrCYdhVQL4kiI/edit?usp=sharing)  
-[Demo]()
+
+[Google Doc](https://docs.google.com/presentation/d/18k6E0X6D1LEZ7Ei4u2wI1JZ88MXVi5RrCYdhVQL4kiI/edit?usp=sharing)
 
 ## Getting Started
 

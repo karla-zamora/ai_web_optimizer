@@ -48,18 +48,18 @@ export default function Home() {
         <div class="p-4 col-span-4 text-center flex flex-col grow justify-center">
           <h1 class="text-3xl p-6">Basic<br/></h1>
           <ul class="p-4 text-center flex flex-col justify-center divide-y divide-solid divide-neutral-400">
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br/></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br/></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br/></li>
+            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Ability to upload images of your site<br/></li>
+            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Recieve tailored feedback<br/></li>
+            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Chat with our custom chat bot<br/></li>
           </ul>
           <div class="p-6"><BasicButton /></div>
         </div>
         <div class="p-4 col-span-4 text-center flex flex-col justify-center">
           <h1 class="text-3xl p-6">Pro<br/></h1>
           <ul class="p-4 text-center flex flex-col justify-center divide-y divide-solid divide-neutral-400">
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br/></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br/></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br/></li>
+            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Access to all basic features<br/></li>
+            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Ability to upload raw HTML<br/></li>
+            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Recieve and view edited code<br/></li>
           </ul>
           <div class="p-6"><ProButton /></div>
         </div>

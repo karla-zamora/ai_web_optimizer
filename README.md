@@ -9,11 +9,9 @@ Jonathan Ballona Sanchez: https://github.com/jballo
 Cole K: https://github.com/cole-kralicek  
 Karla Zamora: https://github.com/karla-zamora 
 
-## Slides
-["Google Docs"](https://docs.google.com/presentation/d/18k6E0X6D1LEZ7Ei4u2wI1JZ88MXVi5RrCYdhVQL4kiI/edit?usp=sharing)
-
-## Demo
-["Website"]()
+## Links
+[Slides](https://docs.google.com/presentation/d/18k6E0X6D1LEZ7Ei4u2wI1JZ88MXVi5RrCYdhVQL4kiI/edit?usp=sharing)  
+[Demo]()
 
 ## Getting Started
 

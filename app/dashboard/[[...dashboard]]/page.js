@@ -40,9 +40,8 @@ export default function Page() {
               </SidebarBody>
             </Sidebar>
           </div>
-          <div className="flex-grow p-1">
+          <div className="p-1">
             <h1>Welcome to your dashboard!</h1>
-            <p>Some content</p>
             <div>
               <Sandbox/>
             </div>

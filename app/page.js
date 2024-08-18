@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import BasicButton from './components/BasicButton';
 import ProButton from './components/ProButton';
 import Footer from './components/Footer';
+import videoDemo from '../videos/Hackathon-edit-2.mp4'
 
 export default function Home() {
   return (
@@ -35,11 +36,10 @@ export default function Home() {
 
       <div className="grid bg-white grid-cols-1 gap-4 md:grid-cols-2" id="features">
         <div className="p-4 flex justify-center items-center">
-          <img
-            className="w-full h-auto object-cover rounded-2xl"
-            src="https://images.unsplash.com/photo-1712111474888-29e9431241b6?q=80&w=2232&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Feature"
-          />
+          <video className="w-full h-auto object-cover rounded-2xl" autoplay muted controls>
+            <source src={videoDemo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
         <ul className="p-4 text-center md:text-left flex flex-col justify-center divide-y divide-solid divide-neutral-400">
           <li className="text-2xl p-6 hover:-translate-x-1 transform transition duration-200">Content Optimization</li>

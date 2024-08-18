@@ -116,12 +116,6 @@ export default function Home() {
         return { appResponse, styleResponse, explanation, codeResponse }
     }
 
-    const handleReference = () => {
-        //setMessage(referencedCode)
-        console.log(referencedCode)
-    }
-
-
     return (
         <Box
             width="100vw"

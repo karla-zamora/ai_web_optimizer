@@ -1,9 +1,59 @@
 import { SignUpButton } from "@clerk/nextjs";
+import { useEffect, useState, useRef } from "react";
 
 export default function Header(){
+    const [isSticky, setIsSticky] = useState(false);
+    const [navHeight, setNavHeight] = useState(0);
+    const navRef = useRef(null);
+    const placeholderRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (navRef.current && placeholderRef.current) {
+                const navTop = navRef.current.getBoundingClientRect().top;
+
+                // Make the navbar sticky when its top reaches the top of the viewport
+                if (navTop <= 0) {
+                    setIsSticky(true);
+                }
+
+                // If the user scrolls back up and the placeholder is in view, remove the sticky class
+                if (window.scrollY < placeholderRef.current.offsetTop) {
+                    setIsSticky(false);
+                }
+            }
+        };
+
+        const updateNavHeight = () => {
+            if (navRef.current) {
+                setNavHeight(navRef.current.offsetHeight);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", updateNavHeight);
+
+        updateNavHeight(); // Initialize the navbar height on component mount
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", updateNavHeight);
+        };
+    }, []);
+
     return (
         <header>
-            <nav class="bg-white border-gray-600 border-solid border-b-2 px-6 lg:px-6 py-2.5 dark:bg-gray-800">
+            <div className="bg-white text-gray-800 text-center">
+                <h1 className="text-[250px]">EmberCraft</h1>
+            </div>
+            {/* Placeholder div to hold space when navbar becomes sticky */}
+            <div ref={placeholderRef} style={{ height: isSticky ? `${navHeight}px` : 'auto' }} />
+            <nav 
+                ref={navRef}
+                class={`bg-white border-gray-600 border-solid border-b-2 px-6 lg:px-6 py-2.5 dark:bg-gray-800 transition-all duration-300 ${
+                    isSticky ? 'fixed top-0 left-0 w-full z-50 shadow-md' : ''
+                }`}
+            >
                 <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <a href="/#landing" class="flex items-center">
                         <img src="https://www.svgrepo.com/show/375811/flame.svg" class="mr-3 h-6 sm:h-9" alt="Logo" />

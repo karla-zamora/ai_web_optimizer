@@ -1,4 +1,5 @@
 'use client'
+
 import Header from './components/Header';
 import StartButton from './components/StartButton';
 import Image from "next/image";

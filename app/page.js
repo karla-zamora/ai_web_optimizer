@@ -52,7 +52,8 @@ export default function Home() {
             <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Recieve tailored feedback<br/></li>
             <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Chat with our custom chat bot<br/></li>
           </ul>
-          <div class="p-6"><BasicButton /></div>
+          <h1 class="text-lg font-semibold">$1.99 monthly</h1>
+          <div class="p-4"><BasicButton /></div>
         </div>
         <div class="p-4 col-span-4 text-center flex flex-col justify-center">
           <h1 class="text-3xl p-6">Pro<br/></h1>
@@ -61,7 +62,8 @@ export default function Home() {
             <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Ability to upload raw HTML<br/></li>
             <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Recieve and view edited code<br/></li>
           </ul>
-          <div class="p-6"><ProButton /></div>
+          <h1 class="text-lg font-semibold">$4.99 monthly</h1>
+          <div class="p-4"><ProButton /></div>
         </div>
       </div>
 

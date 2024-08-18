@@ -1,11 +1,61 @@
 import { SignUpButton } from "@clerk/nextjs";
+import { useEffect, useState, useRef } from "react";
 
 export default function Header(){
+    const [isSticky, setIsSticky] = useState(false);
+    const [navHeight, setNavHeight] = useState(0);
+    const navRef = useRef(null);
+    const placeholderRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (navRef.current && placeholderRef.current) {
+                const navTop = navRef.current.getBoundingClientRect().top;
+
+                // Make the navbar sticky when its top reaches the top of the viewport
+                if (navTop <= 0) {
+                    setIsSticky(true);
+                }
+
+                // If the user scrolls back up and the placeholder is in view, remove the sticky class
+                if (window.scrollY < placeholderRef.current.offsetTop) {
+                    setIsSticky(false);
+                }
+            }
+        };
+
+        const updateNavHeight = () => {
+            if (navRef.current) {
+                setNavHeight(navRef.current.offsetHeight);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", updateNavHeight);
+
+        updateNavHeight(); // Initialize the navbar height on component mount
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", updateNavHeight);
+        };
+    }, []);
+
     return (
         <header>
-            <nav class="bg-white border-gray-600 border-solid border-b-2 px-6 lg:px-6 py-2.5 dark:bg-gray-800">
+            <div className="bg-white text-gray-800 text-center">
+                <h1 className="text-[250px]">EmberCraft</h1>
+            </div>
+            {/* Placeholder div to hold space when navbar becomes sticky */}
+            <div ref={placeholderRef} style={{ height: isSticky ? `${navHeight}px` : 'auto' }} />
+            <nav 
+                ref={navRef}
+                class={`bg-white border-gray-600 border-solid border-b-2 px-6 lg:px-6 py-2.5 dark:bg-gray-800 transition-all duration-300 ${
+                    isSticky ? 'fixed top-0 left-0 w-full z-50 shadow-md' : ''
+                }`}
+            >
                 <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                    <a href="/#landing" class="flex items-center">
+                    <a href="/" class="flex items-center">
                         <img src="https://www.svgrepo.com/show/375811/flame.svg" class="mr-3 h-6 sm:h-9" alt="Logo" />
                         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">EmberCraft</span>
                     </a>
@@ -21,16 +71,13 @@ export default function Header(){
                     <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                             <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Dashboard</a>
+                                <a href="/" class="block py-2 pr-4 pl-3 text-gray-700 rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Dashboard</a>
                             </li>
                             <li>
                                 <a href="/#features" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Features</a>
                             </li>
                             <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Docs</a>
+                                <a href="/#pricing" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
                             </li>
                         </ul>
                     </div>

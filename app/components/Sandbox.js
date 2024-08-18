@@ -22,6 +22,12 @@ export default function Sandbox() {
     // to scroll down for every new message
     const messagesEndRef = useRef(null);
 
+    const [hydrated, setHydrated] = useState(false);
+
+    useEffect(() => {
+        setHydrated(true);
+    }, []);
+
     const sendMessage = async () => {
         if (!message.trim() || isLoading) return; // Empty message check
 
@@ -75,7 +81,7 @@ export default function Sandbox() {
     };
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     };
 
     // Scroll to bottom of each new message
@@ -196,28 +202,31 @@ export default function Sandbox() {
                         </Button>
                     </Stack>
                 </Stack>
-
-                <SandpackProvider
-                    template="react"
-                    files={{
-                        '/App.js': {
-                            code: code,
-                            active: true,
-                        },
-                        'App.css': {
-                            code: style,
-                            active: true
-                        }
-                    }}
-                >
-                    <SandpackLayout>
-                        <SandpackCodeEditor />
-                    </SandpackLayout>
-                    <br></br>
-                    <SandpackLayout >
-                        <SandpackPreview />
-                    </SandpackLayout>
-                </SandpackProvider>
+                {
+                    hydrated && (
+                        <SandpackProvider
+                            template="react"
+                            files={{
+                                '/App.js': {
+                                    code: code,
+                                    active: true,
+                                },
+                                'App.css': {
+                                    code: style,
+                                    active: true
+                                }
+                            }}
+                        >
+                            <SandpackLayout>
+                                <SandpackCodeEditor />
+                            </SandpackLayout>
+                            <br></br>
+                            <SandpackLayout >
+                                <SandpackPreview />
+                            </SandpackLayout>
+                        </SandpackProvider>
+                    )
+                }
 
             </Stack>
         </Box>

@@ -28,20 +28,20 @@ export default function Home() {
           <div class="p-6"><StartButton /></div>
         </div>
         <div class="p-0 md:p-4 col-span-1 md:col-span-1 flex justify-center items-center">
-          <img
-            class="w-full h-auto md:h-full object-cover rounded-2xl"
-            src="https://images.unsplash.com/photo-1459664018906-085c36f472af?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Decorative"
-          />
+          <video className="w-full h-auto object-cover rounded-2xl" autoplay muted controls>
+            <source src={videoDemo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
 
       <div className="grid bg-white grid-cols-1 gap-4 md:grid-cols-2" id="features">
         <div className="p-4 flex justify-center items-center">
-          <video className="w-full h-auto object-cover rounded-2xl" autoplay muted controls>
-            <source src={videoDemo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <img
+            class="w-full h-auto md:h-full object-cover rounded-2xl"
+            src="https://images.unsplash.com/photo-1459664018906-085c36f472af?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Decorative"
+          />
         </div>
         <ul className="p-4 text-center md:text-left flex flex-col justify-center divide-y divide-solid divide-neutral-400">
           <li className="text-2xl p-6 hover:-translate-x-1 transform transition duration-200">Content Optimization</li>

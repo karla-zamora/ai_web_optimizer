@@ -4,8 +4,6 @@ import Header from './components/Header';
 import StartButton from './components/StartButton';
 import Image from "next/image";
 import { useEffect } from 'react'
-import { createUser, getUser, updateUser, deleteUser } from '@/app/components/api/user'
-import { addProject, getProject, updateData, deleteProject } from '@/app/components/api/project'
 import BasicButton from './components/BasicButton';
 import ProButton from './components/ProButton';
 import Footer from './components/Footer';
@@ -19,7 +17,7 @@ export default function Home() {
 
       <Header />
 
-      <div class="grid bg-white h-full grid-cols-1 gap-4 md:grid-cols-2" id="landing">
+      <div class="grid bg-white h-min-[20rem] grid-cols-1 gap-4 md:grid-cols-2" id="landing">
         <div class="p-4 col-span-1 md:col-span-1 text-center flex flex-col justify-center">
           <h1 class="text-3xl hover:translate-x-1 transform transition duration-200">Crafting harmony</h1>
           <h1 class="text-3xl p-6 hover:translate-x-1 transform transition duration-200">in every digital moment.</h1>
@@ -35,7 +33,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid bg-white h-full grid-cols-1 gap-4 md:grid-cols-2" id="features">
+      <div className="grid bg-white grid-cols-1 gap-4 md:grid-cols-2" id="features">
         <div className="p-4 flex justify-center items-center">
           <img
             className="w-full h-auto object-cover rounded-2xl"

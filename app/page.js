@@ -84,7 +84,7 @@ export default function Home() {
       <SignedIn>
         <div class="grid bg-white grid-cols-1 gap-4 flex-col divide-x divide-solid divide-neutral-400 md:grid-cols-8" id="pricing">
           <div class="p-4 col-span-8 text-center flex flex-col justify-center">
-            <h1 class="text-3xl p-6">You're all set up!<br/></h1>
+            <h1 class="text-3xl p-6">You&apos;re all set up!<br/></h1>
             <h1 class="text-md">Click below to go to your dashboard</h1>
             <div class="p-4"><DashButton /></div>
           </div>

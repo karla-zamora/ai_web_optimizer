@@ -1,11 +1,6 @@
 import { SignUpButton } from "@clerk/nextjs";
 
 export default function Header(){
-    const autoScroll = function (element_id) {
-        const element = document.getElementById(element_id)
-        element?.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
-    }
-
     return (
         <header>
             <nav class="bg-white border-gray-600 border-solid border-b-2 px-6 lg:px-6 py-2.5 dark:bg-gray-800">

@@ -62,11 +62,11 @@ export default function Home() {
           <div class="p-6"><BasicButton /></div>
         </div>
         <div class="p-4 col-span-4 text-center flex flex-col justify-center">
-          <h1 class="text-3xl p-6">Basic<br/></h1>
+          <h1 class="text-3xl p-6">Pro<br/></h1>
           <ul class="p-4 text-center flex flex-col justify-center divide-y divide-solid divide-neutral-400">
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br/></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br/></li>
-            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Basic thing<br/></li>
+            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br/></li>
+            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br/></li>
+            <li class="text-lg p-6 hover:-translate-y-1 hover:scale-105 transform transition duration-200">Pro thing<br/></li>
           </ul>
           <div class="p-6"><ProButton /></div>
         </div>
